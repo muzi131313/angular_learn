@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="expanderModule">
+
+<head>
+    <title>index</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+	<div ng-controller="SomeController">
+		<accordation>
+			<expander class="expander" ng-repeat="expander in expanders" expander-title="expander.title">
+				{{expander.text}}
+			</expander>
+		</accordation>
+	</div>
+
+	<script type="text/javascript" src="libs/angular-1.6.3/angular.js"></script>
+	<script type="text/javascript">
+		var expanderModule = angular.module('expanderModule', []);
+		expanderModule.directive('accordation', function () {
+			return {
+				restrict: 'EA',
+				replace: true,
+				transclude: true,
+				template: '<div ng-transclude></div>',
+				controller: function () {
+					var expanders = [];
+					this.getOpend = function (selectExpander) {
+						angular.forEach(expanders, function (expander) {
+							if(selectExpander != expander){
+								expander.showMe = false;
+							}
+						});
+					}
+					this.addExpander = function (expander) {
+						expanders.push(expander);
+					}
+				}
+			}
+		});
+		expanderModule.directive('expander', function () {
+			return {
+				restrict: 'EA',
+				replace: true,
+				transclude: true,
+				require: '^?accordation',
+				scope: {
+					title: '=expanderTitle'
+				},
+				template: '<div>\
+							<div class="title" ng-click="toggle()">{{title}}</div>\
+							<div class="body" ng-show="showMe" ng-transclude></div>\
+						   </div>',
+				link: function (scope, element, attrs, accordationController) {
+					scope.showMe = false;
+					accordationController.addExpander(scope);
+					scope.toggle = function () {
+						scope.showMe = !scope.showMe;
+						accordationController.getOpend(scope);
+					}
+				}
+			}
+		});
+
+		expanderModule.controller('SomeController', function ($scope) {
+			$scope.expanders = [{
+				title: 'Click me to expander',
+				text: 'Hi, there was folks'
+			}, {
+				title: 'Click this',
+				text: 'show me for what'
+			}, {
+				title: 'Click btn',
+				text: 'saw this, you will get everything'
+			}];
+		});
+	</script>
+</body>
+</html>
