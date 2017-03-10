@@ -8,17 +8,24 @@
     <style type="text/css">
 		*{ padding: 0; margin: 0; }
 		ul{ list-style: none; }
+		a{ text-decoration: none; }
+		#page{ display: flex; flex-direction: column; }
+		#page header{ height: 10px; text-align: center; }
+		#urls{ flex: 1; }
+		#urls li{ height: 10px; text-align: center; }
     </style>
 </head>
 <body>
-	<header>
-		demo列表
-	</header>
-	<section>
-		<ul>
-			<li><a href="demos/ng-expander.html"></a></li>
-			<li><a href="demos/ng-accordation.html"></a></li>
-		</ul>
-	</section>
+	<div id="page">
+		<header>
+			demo列表
+		</header>
+		<section id="urls">
+			<ul>
+				<li><a href="demos/ng-expander.html"></a></li>
+				<li><a href="demos/ng-accordation.html"></a></li>
+			</ul>
+		</section>
+	</div>
 </body>
 </html>
