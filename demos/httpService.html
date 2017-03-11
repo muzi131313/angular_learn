@@ -28,7 +28,8 @@
 				return $http({
 					method: 'GET',
 					url: path,
-					data: data
+					params: data,
+					paramSerializer: '$httpParamSerializerJQLike'
 				});
 			}
 			return {
