@@ -12,9 +12,12 @@
 		<label>用户名</label>
 		<input type="text" ng-model="username" placeholder="请输入用户名" id="">
 		<pre ng-show="username">
-			<users ng-repeat="user in users">
+			<users ng-repeat="user in (users | filter:username)">
 			</users>
 		</pre>
+		<p>
+			用户名有：Tom,Jack,Jackson,Alex,Rose,Alise
+		</p>
 	</div>
 
 	<script type="text/javascript" src="libs/angular-1.6.3/angular.js"></script>
@@ -45,16 +48,18 @@
 			var timeout;
 			$scope.$watch('username', function (newUserName) {
 				if(newUserName){
+					// 防止抖动
 					if(timeout){
 						$timeout.cancel(timeout);
 					}
 					timeout = $timeout(function () {
+						$scope.newUserName = newUserName;
 						userService.userList(newUserName).then(function (response) {
 							$scope.users = response.data.data;		
 						}, function error(response) {
 							console.error('err', response);
 						});
-					});
+					}, 350);
 				}
 			});
 		}]);
