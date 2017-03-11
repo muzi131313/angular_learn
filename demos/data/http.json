@@ -1,9 +1,9 @@
 {
-	data: [{
-		name: 'Tom'
-	}, {
-		name: 'Jack'
-	}, {
-		name: 'Jackson'
-	}]
+    "data": [{
+        "name": "Tom"
+    }, {
+        "name": "Jack"
+    }, {
+        "name": "Jackson"
+    }]
 }

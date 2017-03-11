@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="serviceModule">
+
+<head>
+    <title>index</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+	<div ng-controller="ServiceController">
+		<label>用户名</label>
+		<input type="text" ng-model="username" placeholder="请输入用户名" id="">
+		<pre ng-show="username">
+			<users ng-repeat="user in users">
+			</users>
+		</pre>
+	</div>
+
+	<script type="text/javascript" src="libs/angular-1.6.3/angular.js"></script>
+	<script type="text/javascript">
+		var serviceModule = angular.module('serviceModule', []);
+		serviceModule.factory('userService', ['$http', function ($http) {
+			var doRequest = function (data, path) {
+				return $http({
+					method: 'GET',
+					url: path,
+					data: data
+				});
+			}
+			return {
+				userList: function (username) {
+					return doRequest({username: username}, 'data/http.json');
+				}
+			}
+		}]);
+		serviceModule.directive('users', function () {
+			return {
+				restirct: 'EA',
+				replace: true,
+				template: '<li ng-bind="user.name"></li>'
+			}
+		});
+		serviceModule.controller('ServiceController', ['$scope', '$timeout', 'userService', function ($scope, $timeout, userService) {
+			var timeout;
+			$scope.$watch('username', function (newUserName) {
+				if(newUserName){
+					if(timeout){
+						$timeout.cancel(timeout);
+					}
+					timeout = $timeout(function () {
+						userService.userList(newUserName).then(function (response) {
+							$scope.users = response.data.data;		
+						}, function error(response) {
+							console.error('err', response);
+						});
+					});
+				}
+			});
+		}]);
+	</script>
+</body>
+</html>

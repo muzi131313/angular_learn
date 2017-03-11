@@ -22,13 +22,14 @@
 		httpModule.controller('loadDataController', ['$scope', '$http', function ($scope, $http) {
 			$http({
 				method: 'GET',
-				url: 'data/http.json',
-				dataType: 'json'
-			}).success(function (data, status, headers, config) {
-				console.log(data);
-				$scope.users = data.data;
-			}).error(function (data, status, headers, config) {
-				console.log('error');
+				url: 'data/http.json'
+			}).then(function success(response) {
+				// console.log(response);
+				$scope.users = response.data.data;
+			}, function errorCallback(response) {
+				console.error('err', response);
+				// called asynchronously if an error occurs
+				// or server returns response with an error status.
 			});
 		}]);
 	</script>
