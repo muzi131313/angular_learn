@@ -7,7 +7,7 @@ var doRequest = function ($http, path) {
 	});
 }, requestError = function (err) { // TODO:统一处理
 	console.error(err);
-};
+}, httpPrefix = './';
 
 /**
  * 书籍列表
@@ -22,7 +22,7 @@ bookListModule.factory('bookListService', ['$http', function ($http) {
 		 * @return {[type]}                 [description]
 		 */
 		bookList: function (bookType, searchText, successCallback) {
-			doRequest($http, '../data/books' + bookType + '.json')
+			doRequest($http, httpPrefix+'data/books' + bookType + '.json')
 			.success(function(largeLoad) {
 				largeLoad = largeLoad || [];
 				if(searchText){
@@ -54,7 +54,7 @@ bookDetailModule.factory('boolDetailService', ['$http', function ($http) {
 		 * @return {[type]}                 [description]
 		 */
 		bookDetail: function (bookId, successCallback) {
-			doRequest($http, '../data/books0.json')
+			doRequest($http, httpPrefix+'data/books0.json')
 			.success(function(largeLoad) {
 				largeLoad = largeLoad || [];
 				largeLoad = largeLoad.filter(function(item) {
