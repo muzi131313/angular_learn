@@ -1,0 +1,25 @@
+<div ng-controller="BookListCtrl">
+    <div class="row">
+        <div class="col-md-10">
+            <!-- <booksearch></booksearch> -->
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="搜索关键词" ng-model="searchText">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" ng-click="search()">Go!</button>
+                </span>
+            </div>
+
+        </div>
+        <div class="col-md-2">
+        	<a ui-sref="addbook" class="btn btn-primary">新增书籍</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <div class="gridStyle" ng-grid="gridOptions">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
