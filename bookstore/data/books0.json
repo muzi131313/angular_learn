@@ -3,7 +3,7 @@
     "index": "1",
     "name": "用AngularJS开发下一代WEB应用",
     "type": "计算机",
-    "author": "大漠穷秋",
+    "author": "二哈",
     "pubTime": "2014-01-01",
     "price": "35",
     "hasElectron": false
@@ -12,7 +12,7 @@
     "index": "2",
     "name": "Ext江湖",
     "type": "计算机",
-    "author": "大漠穷秋",
+    "author": "二哈",
     "pubTime": "2014-03-02",
     "price":"50",
     "hasElectron": true
@@ -21,7 +21,7 @@
     "index": "3",
     "name": "ActionScript3.0游戏设计基础（第二版）",
     "type": "计算机",
-    "author": "大漠穷秋",
+    "author": "二哈",
     "pubTime": "2014-04-03",
     "price":"45",
     "hasElectron": true
@@ -30,7 +30,7 @@
     "index": "4",
     "name": "用AngularJS开发下一代WEB应用",
     "type": "计算机",
-    "author": "大漠穷秋",
+    "author": "二哈",
     "pubTime": "2014-05-06",
     "price":"25",
     "hasElectron": false
@@ -39,7 +39,7 @@
     "index": "5",
     "name": "Ext江湖",
     "type": "计算机",
-    "author": "大漠穷秋",
+    "author": "二哈",
     "pubTime": "2014-07-08",
     "price":"55",
     "hasElectron": true
