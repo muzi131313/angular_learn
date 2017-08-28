@@ -3,8 +3,8 @@ this was my angular project。 [show case](https://muzi131313.github.io/angular_
 
 # 项目启动
 
-> 1.npm install
-> 2.npm run start
+> 1.npm install  
+> 2.npm run start  
 
 # ps
 
